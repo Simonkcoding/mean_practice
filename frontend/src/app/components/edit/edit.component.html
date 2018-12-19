@@ -1,0 +1,40 @@
+<div>
+  <br>
+  <mat-card>
+    <section class='mat-typography'>
+      <h3>Update issue</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]='updateForm' class='edit-form'>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Issue title" formControlName='title' #title>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="responsible" formControlName='responsible' #responsible>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <textarea matInput placeholder="Description" formControlName='description' #description></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder='severity' formControlName="severity" #severity>
+          <mat-option value='low'>low</mat-option>
+          <mat-option value='medium'>medium</mat-option>
+          <mat-option value='high'>high</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder='status' formControlName="status" #status>
+          <mat-option value='open'>open</mat-option>
+          <mat-option value='in-progress'>in-progress</mat-option>
+          <mat-option value='done'>done</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <br><br>
+      <button type='submit' (click)="updateIssue(title.value,responsible.value,description.value, severity.value,status.value)"
+        [disabled]='updateForm.pristine||updateForm.invalid' mat-raised-button color='primary'>Save</button>
+      <button mat-raised-button color="accent" routerLink='/list'>Back</button>
+    </form>
+  </mat-card>
+</div>
